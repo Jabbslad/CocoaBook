@@ -8,14 +8,24 @@
 
 #import "Photo.h"
 
+@interface Photo (Private)
++ (NSString *) defaultCaption;
+- (void) logPhotographer;
+- (id) currentObject;
+- (void) checkObjectType;
+@end
+
 
 @implementation Photo
+
+@synthesize caption;
+@synthesize photographer;
 
 - (id) init {
 	
     if ( self = [super init] ) {
 		
-        [self setCaption:@"Default Caption"];
+        [self setCaption:[[self class] defaultCaption]];
         [self setPhotographer:@"Default Photographer"];
     }
     
@@ -36,18 +46,6 @@
 	return photographer;
 }
 
-- (void) setCaption: (NSString*)input {
-	
-	[caption autorelease];
-	caption = [input retain];
-}
-
-- (void) setPhotographer: (NSString*)input {
-	
-	[photographer autorelease];
-	photographer = [input retain];
-}
-
 - (id) copyWithZone:(NSZone *)zone {
 	Photo* newPhoto = [[Photo allocWithZone:zone] init];
 	newPhoto.caption = self.caption;
@@ -61,6 +59,27 @@
     [self setPhotographer:nil];
     
     [super dealloc];
+}
+
++ (NSString *) defaultCaption {
+	return @"Untitled Photo";
+}
+
+- (void) logPhotographer {
+	NSLog(@"Photographer: %@", photographer);
+}
+
+- (id) currentObject {
+	return [Photo photo];
+}
+
+- (void) checkObjectType {
+	id object = [self currentObject];
+	BOOL isPhoto = [object isMemberOfClass:[Photo class]];
+	
+	if (isPhoto) {
+		NSLog(@"object is an instance of photo");
+	}
 }
 
 @end

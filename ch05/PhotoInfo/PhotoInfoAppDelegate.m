@@ -29,13 +29,15 @@
 	[photo1 release];
 	
 	NSLog(@"photo2 caption: %@", photo2.caption);
-	NSLog(@"photo2 photographe: %@r", photo2.photographer);
+	NSLog(@"photo2 photographer: %@", photo2.photographer);
 	
 	photo2.caption = @"Moffett Field";
-	photo2.photographer = @"Jamie Atkinson";
+	photo2.photographer = @"Helen Atkinson";
 	
 	NSLog(@"photo2 caption: %@", photo2.caption);
 	NSLog(@"photo2 photographer: %@", photo2.photographer);
+	
+	[photo2 checkObjectType];
 	[photo2 release];
 	
 }

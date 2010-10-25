@@ -9,17 +9,11 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface Photo : NSObject {
-	NSString* caption;
-	NSString* photographer;
-}
+@interface Photo : NSObject
 
 + (Photo*) photo;
 
-- (NSString*) caption;
-- (NSString*) photographer;
-
-- (void) setCaption: (NSString*) input;
-- (void) setPhotographer: (NSString*) input;
+@property (retain) NSString* caption;
+@property (retain) NSString* photographer;
 
 @end
