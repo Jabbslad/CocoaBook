@@ -25,9 +25,8 @@
 	NSLog(@"photo1 caption: %@", photo1.caption);
 	NSLog(@"photo1 photographer: %@", photo1.photographer);
 	
+	Photo* photo2 = [photo1 copy];
 	[photo1 release];
-	
-	Photo* photo2 = [Photo photo];
 	
 	NSLog(@"photo2 caption: %@", photo2.caption);
 	NSLog(@"photo2 photographe: %@r", photo2.photographer);
@@ -37,6 +36,7 @@
 	
 	NSLog(@"photo2 caption: %@", photo2.caption);
 	NSLog(@"photo2 photographer: %@", photo2.photographer);
+	[photo2 release];
 	
 }
 

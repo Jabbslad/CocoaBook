@@ -48,6 +48,13 @@
 	photographer = [input retain];
 }
 
+- (id) copyWithZone:(NSZone *)zone {
+	Photo* newPhoto = [[Photo allocWithZone:zone] init];
+	newPhoto.caption = self.caption;
+	newPhoto.photographer = self.photographer;
+	return newPhoto;
+}
+
 - (void) dealloc {
     
     [self setCaption:nil];
