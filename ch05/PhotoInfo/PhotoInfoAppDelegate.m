@@ -37,7 +37,12 @@
 	NSLog(@"photo2 caption: %@", photo2.caption);
 	NSLog(@"photo2 photographer: %@", photo2.photographer);
 	
-	[photo2 checkObjectType];
+	SEL checkObjectTypeSelector = @selector(checkObjectType);
+	if ([photo2 respondsToSelector:checkObjectTypeSelector]) {
+		NSLog(@"Performing selector: %@", NSStringFromSelector(checkObjectTypeSelector));
+		[photo2 performSelector:checkObjectTypeSelector];
+	}
+	
 	[photo2 release];
 	
 }
